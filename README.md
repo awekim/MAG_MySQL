@@ -16,4 +16,5 @@ Here are the steps.
 
 3. Create and import table in MySQL
 - Use SQL codes to create and import tables.
-
+- When importing tables, make sure the encoding is cp1250. I noticed that the workbench bombs out when it encounters non UTF-8 characters. In case of MAG, it contains many non-English letters, so it's better not to use UTF-8.
+-   
