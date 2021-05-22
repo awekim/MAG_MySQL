@@ -1,12 +1,19 @@
-This issue can be resolved by setting the higher values for the MySQL variable innodb_buffer_pool_size. The default value for innodb_buffer_pool_size will be 8,388,608.
+If you are an R user, and try create new table by using RMySQL,
+you may face this error saying 
+"Error in .local(conn, statement, ...) : 
+  could not run statement: The total number of locks exceeds the lock table size".
 
-To change the settings value for innodb_buffer_pool_size please see the below set.
+I have found the solutions from the link below, and added more details to it   
+"https://stackoverflow.com/questions/6901108/the-total-number-of-locks-exceeds-the-lock-table-size/50235106"
 
-Locate the file my.cnf from the server. For Linux servers this will be mostly at /etc/my.cnf
-Add the line innodb_buffer_pool_size=64MB to this file
-Restart the MySQL server
-To restart the MySQL server, you can use anyone of the below 2 options:
+1. Stop the MySQL server
+- open services.msc and stop MySQL
 
-service mysqld restart
-/etc/init.d/mysqld restart
-Reference The total number of locks exceeds the lock table size
+2. Open the file my.cnf from the server. 
+(In my case, it's located at C:\ProgramData\MySQL\MySQL Server 8.0)
+
+3. Add the line innodb_buffer_pool_size=64MB to this file.
+The default setting is 8MB.
+
+4. Restart the MySQL server
+- open services.msc and start MySQL
